@@ -1,0 +1,10 @@
+hello\t1
+world\t1
+hello\t1
+world\t1
+world\t1
+apple\t1
+banana\t1
+apple\t1
+banana\t1
+banana\t1
