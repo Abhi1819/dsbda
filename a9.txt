@@ -1,0 +1,172 @@
+﻿4/14/24, 12:35 PM DSBDA9.ipynb - Colab
+
+import requests
+import bs4
+
+Unsupported Cell Type. Double-Click to inspect/edit the content.
+
+sending request
+
+request1=requests.get('https://www.flipkart.com/poco-c31-royal-blue-64-gb/p/itm19effae969b86')
+request1
+
+<Response [200]>
+
+request1.content
+
+BeautifulSoup is used to store data in good format in variable soup
+
+soup=bs4.BeautifulSoup(request1.text)
+
+fetching comments/reviews
+
+reviews=soup.findAll('div',{'class':'t-ZTKy'})
+for review in reviews:
+    print(review.get_text()+"\n\n")
+
+Phone is good but camera is not good as excepted.READ MORE
+
+Nice phoneREAD MORE
+
+Camera quality is very nice low budget main good phoneREAD MORE
+
+Battery is goodCamera okDisplay goodPerformance okFit the budgetREAD MORE
+
+GoodREAD MORE
+
+SuperbREAD MORE
+
+Camera quality is goodREAD MORE
+
+Nice. CamaraREAD MORE
+
+Vary good product POCO C31GoodREAD MORE
+
+Best Phone In PriceREAD MORE
+
+fetching overall Rating
+
+ratings=soup.find('div',{'class':'_2d4LTz'}).get_text();
+print("Overall Rating is: ",ratings)
+
+Overall Rating is:  4.3
+
+fetch individual rating
+
+rating1=soup.findAll('div',{'class':'_3LWZlK _1BLPMq'})
+for r in rating1:
+    print(r.get_text()+"\n")
+
+4
+
+4
+
+5
+
+5
+
+https://colab.research.google.com/drive/155FHl9v_Ys_dfMxkc8yy88GNFEqGWYvk#scrollTo=2f2c5203-fc6e-4d25-9570-0eb90ba7c839&printMo… 1/3
+
+
+
+4/14/24, 12:35 PM DSBDA9.ipynb - Colab
+
+5
+
+5
+
+5
+
+5
+
+5
+
+4
+
+tag=soup.find('span',{'class':'yhB1nd GXgmTe'}).get_text();
+print("The Tag is: ",tag)
+
+The Tag is:  #JustHere
+
+fetching Names of people who has shared their reviews
+
+names=soup.findAll('p',{'class':'_2sc7ZR _2V5EHH'})
+for name in names:
+    print(name.get_text()+"\n")
+
+Soma  Mukherjee
+
+Gundraju Nanajee
+
+Suriya Sahoo
+
+Sumant Raj
+
+Vivek Kumar
+
+chandan singh
+
+Flipkart Customer
+
+Aman Pandey
+
+AMAR DAS
+
+SAURABH  MAURYA 
+
+Fetching Questions And Answers of customer
+
+questions=soup.findAll('div',{'class':'_1xR0kG _3cziW5'})
+for question in questions:
+    print(question.get_text()+"\n")
+    answers=question.findNext('div',{'class':'_2yeNfb'}).get_text();
+    print(answers+"\n\n")
+
+Q:Is there a call recording option?
+
+A:No there is no recording option, record can be only for unknown number & also the person on the other end can hear that this call 
+
+Q:Is battery  removable?
+
+A:No. Non-removable.
+
+Q:Does this phone contains finger print sensor?
+
+A:Yes.
+
+Q:Can i use morpho device?
+
+A:Yess! you can...
+
+Q:Does it notify call recording, to the receiver?
+
+A:Yes
+
+Q:Can I play free fire and pubgjh vvvvcicctpycrrioiccee
+
+A:Yaa
+
+https://colab.research.google.com/drive/155FHl9v_Ys_dfMxkc8yy88GNFEqGWYvk#scrollTo=2f2c5203-fc6e-4d25-9570-0eb90ba7c839&printMo… 2/3
+
+
+
+4/14/24, 12:35 PM DSBDA9.ipynb - Colab
+Q:Which is best mobile among Redmi 9i& poco c31
+
+A:both
+
+Q:Volte support or not
+
+A:Yes
+
+Q:Type c charger is available
+
+A:no, micro usb
+
+Q:This phone Double volte supports or not
+
+A:Yes you can use dual 4g volte
+
+Start coding or generate with AI.
+
+https://colab.research.google.com/drive/155FHl9v_Ys_dfMxkc8yy88GNFEqGWYvk#scrollTo=2f2c5203-fc6e-4d25-9570-0eb90ba7c839&printMo… 3/3
