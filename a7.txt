@@ -1,0 +1,48 @@
+!pip install seaborn
+
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('E:/Coding/DSBDA/PRACTICAL/Visualise 2& 3/visualize 2_3.csv')
+df
+
+df.head(10)
+
+df.dropna()
+
+sns.countplot(x='target',data=df,palette='bwr')
+plt.show
+
+sns.countplot(x='sex',data=df,palette='bwr')
+plt.show()
+
+df.columns
+
+plt.figure(figsize=(10,6))
+sns.heatmap(df.corr(),cmap='YlGnBu',annot=True)
+
+sns.lineplot(data=df,x='age',y='cp',hue='target')
+
+sns.histplot(data=df,x='age',hue='target')
+
+sns.histplot(data=df, x='target',hue='sex')
+
+
+temp_df = df[['age', 'cp', 'trestbps', 'chol', 'fbs', 'restecg','oldpeak', 'target']]
+plt.figure(figsize=(15,10))
+sns.pairplot(temp_df,hue='target')
+plt.title('Data Insights')
+plt.legend('Heart Disease')
+plt.tight_layout()
+plt.plot()
+
+
+plt.figure(figsize=(15,10))
+for i,col in enumerate (temp_df.columns,1):
+    plt.subplot(4,3,i)
+    plt.title(f'Distribution of {col} data')
+    sns.histplot(df[col],kde=True)
+    plt.tight_layout()
+    plt.plot()
